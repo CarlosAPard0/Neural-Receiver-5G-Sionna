@@ -1,0 +1,53 @@
+# Neural Receiver Experiment Configuration  
+  
+# Architecture Configuration  
+architecture:  
+  name: "neural_receiver2"  # Only the architecture name  
+    
+# Training Configuration  
+training:  
+  num_training_iterations: 1000
+  batch_size: 128  
+  learning_rate: 0.001
+  optimizer: "adam"  
+  resume_training: True  
+      
+# Channel Configuration  
+channel:  
+  carrier_frequency: 3.5e9  # Hz  
+  delay_spread: 100e-9      # s  
+  cdl_model: "C"            # CDL model to use  
+  speed: 10.0               # Speed [m/s]  
+      
+# SNR Configuration  
+snr:  
+  ebno_db_min: 5.0
+  ebno_db_max: 11.5  
+      
+# OFDM Configuration  
+ofdm:  
+  subcarrier_spacing: 30e3  
+  fft_size: 128  
+  num_ofdm_symbols: 14  
+  dc_null: true  
+  num_guard_carriers: [5, 6]  
+  pilot_pattern: "kronecker"  
+  pilot_ofdm_symbol_indices: [2, 11]  
+  cyclic_prefix_length: 0  
+      
+# Modulation and Coding  
+modulation:  
+  num_bits_per_symbol: 6  # 64qam
+  coderate: 0.5  
+      
+# Paths  
+paths:  
+  weights_dir: "Outputs"  
+  results_dir: "Results"  
+      
+# Evaluation Configuration  
+evaluation:  
+  ebno_range: [5, 11.5, 0.5]  # [min, max, step]  
+  batch_size: 128  
+  num_target_block_errors: 75
+  max_mc_iter: 75

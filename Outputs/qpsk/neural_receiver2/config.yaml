@@ -1,0 +1,43 @@
+architecture:
+  name: neural_receiver2
+channel:
+  carrier_frequency: 3.5e9
+  cdl_model: C
+  delay_spread: 100e-9
+  speed: 10.0
+evaluation:
+  batch_size: 128
+  ebno_range:
+  - -3.0
+  - 3.5
+  - 0.5
+  max_mc_iter: 75
+  num_target_block_errors: 75
+modulation:
+  coderate: 0.5
+  num_bits_per_symbol: 2
+ofdm:
+  cyclic_prefix_length: 0
+  dc_null: true
+  fft_size: 128
+  num_guard_carriers:
+  - 5
+  - 6
+  num_ofdm_symbols: 14
+  pilot_ofdm_symbol_indices:
+  - 2
+  - 11
+  pilot_pattern: kronecker
+  subcarrier_spacing: 30e3
+paths:
+  results_dir: Results
+  weights_dir: Outputs
+snr:
+  ebno_db_max: 3.5
+  ebno_db_min: -3.0
+training:
+  batch_size: 128
+  learning_rate: 0.001
+  num_training_iterations: 1000
+  optimizer: adam
+  resume_training: true
